@@ -11,7 +11,7 @@ class mainController extends Controller
 {
     public function mainPage()
     {
-        $groups = Group::Where('id_parent', '0')->get();
+        $groups = Group::Where('parent_id', '0')->get();
 
         if (request()->has('groupId')) {
             $group = Group::findOrFail(request()->groupId);

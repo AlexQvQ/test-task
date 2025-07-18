@@ -12,7 +12,7 @@ if (!function_exists('allChildGroup', )) {
 
         $processedGroups[] = $group->id;
 
-        $childGroups = Group::where('id_parent', $group->id)->get();
+        $childGroups = Group::where('parent_id', $group->id)->get();
         $hasChildren = $childGroups->isNotEmpty();
 
         $html = '<li class="position-relative">';
@@ -47,7 +47,7 @@ if (!function_exists('allChildGroup', )) {
 if (!function_exists('childId', )) {
     function childId($group, $processedGroups)
     {
-        $childGroups = Group::where('id_parent', $group->id)->get();
+        $childGroups = Group::where('parent_id', $group->id)->get();
         $hasChildren = $childGroups->isNotEmpty();
         array_push($processedGroups, $group->id);
 
